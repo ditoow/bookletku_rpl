@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/lib/supabase";
 
-import CartSidebar from "./components/Cart";
+import CartSidebar from "@/components/cart/Cart";
 
 // Tipe baris dari tabel Supabase
 type MenuRow = {

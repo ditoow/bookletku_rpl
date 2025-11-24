@@ -125,14 +125,11 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* --- Error Alert --- */}
       {error && (
         <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-600">
           <p className="font-semibold">Terjadi Kesalahan: {error}</p>
         </div>
       )}
-
-      {/* --- Modular Components --- */}
 
       <ProductTable
         products={filteredProducts}
@@ -157,7 +154,6 @@ export default function Dashboard() {
         loading={actionLoading}
       />
 
-      {/* --- Image Preview --- */}
       <Dialog
         open={!!previewImage}
         onOpenChange={(open) => !open && setPreviewImage(null)}
