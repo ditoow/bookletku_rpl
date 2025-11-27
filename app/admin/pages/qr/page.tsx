@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label";
 import { Download, Link as LinkIcon, Printer } from "lucide-react";
 
 export default function QrManagementPage() {
-  const [url, setUrl] = useState("http://192.168.1.5:3000");
+  const [url, setUrl] = useState("https://bookletku3.vercel.app/");
   const qrRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = () => {
