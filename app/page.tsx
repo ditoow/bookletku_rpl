@@ -42,6 +42,7 @@ export default function FoodOrderApp() {
   const [menuItems, setMenuItems] = useState<MenuRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
@@ -55,7 +56,7 @@ export default function FoodOrderApp() {
     try {
       await supabase.from("cart_add_tracking").insert({ menu_item_id: menuId });
     } catch (err) {
-      console.error(err);
+      console.error("Tracking error:", err);
     }
   };
 
@@ -65,8 +66,17 @@ export default function FoodOrderApp() {
       const { data } = await supabase
         .from("menu_items")
         .select("*")
-        .order("position", { ascending: true });
-      if (data) setMenuItems(data as MenuRow[]);
+        .order("position", { ascending: true })
+        .order("created_at", { ascending: false });
+
+      if (data) {
+        const mappedData = data.map((item: any) => ({
+          ...item,
+          image_url: item.image_url ?? undefined,
+          keterangan: item.keterangan ?? undefined,
+        }));
+        setMenuItems(mappedData as MenuRow[]);
+      }
       setLoading(false);
     };
     loadMenu();
@@ -117,39 +127,70 @@ export default function FoodOrderApp() {
   const handleCheckoutClick = () =>
     cartItems.length > 0 && setIsConfirmOpen(true);
 
+  
   const processCheckout = async () => {
     if (cartItems.length === 0) return;
     setIsProcessing(true);
+
+    const totalAmount = cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+
     try {
-      const total = cartItems.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
-      );
-      const { data: order } = await supabase
+      
+      const { data: orderData, error: orderError } = await supabase
         .from("orders")
-        .insert({ total_amount: total })
+        .insert({ total_amount: totalAmount, status: "completed" })
         .select()
         .single();
-      await supabase.from("order_items").insert(
-        cartItems.map((i) => ({
-          order_id: order.id,
-          menu_item_id: i.id,
-          quantity: i.quantity,
-          price: i.price,
-        }))
-      );
-      window.open(
-        `https:
-          0,
-          8
-        )}`,
-        "_blank"
-      );
+
+      if (orderError) throw orderError;
+
+      
+      const orderItemsData = cartItems.map((item) => ({
+        order_id: orderData.id,
+        menu_item_id: item.id,
+        quantity: item.quantity,
+        price: item.price,
+      }));
+
+      const { error: itemsError } = await supabase
+        .from("order_items")
+        .insert(orderItemsData);
+
+      if (itemsError) throw itemsError;
+
+      
+      const phoneNumber = "6281226821148"; 
+
+      let message = `*Pesanan Baru #${orderData.id.slice(0, 8)}*\n\n`;
+      message += `*Detail Pesanan:*\n`;
+
+      cartItems.forEach((item) => {
+        const itemTotal = item.price * item.quantity;
+        message += `- ${item.name} (${
+          item.quantity
+        }x) @ Rp ${item.price.toLocaleString(
+          "id-ID"
+        )} = Rp ${itemTotal.toLocaleString("id-ID")}\n`;
+      });
+
+      message += `\n*Total Akhir: Rp ${totalAmount.toLocaleString("id-ID")}*`;
+      message += `\n\nMohon diproses, terima kasih!`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https:
+
+      
+      window.open(whatsappUrl, "_blank");
+
+      
       setCartItems([]);
       setIsCartOpen(false);
       setIsConfirmOpen(false);
     } catch (e: any) {
-      alert(e.message);
+      alert("Gagal memproses pesanan: " + e.message);
     } finally {
       setIsProcessing(false);
     }
@@ -180,7 +221,6 @@ export default function FoodOrderApp() {
               setTheme={setTheme}
             />
 
-            {/* Kirim language ke StoreBanner */}
             <StoreBanner
               totalItems={menuItems.length}
               totalCategories={Math.max(categories.length - 1, 0)}
@@ -188,7 +228,6 @@ export default function FoodOrderApp() {
               language={language}
             />
 
-            {/* Kirim language ke FeaturedMenu */}
             <FeaturedMenu
               items={menuDishes}
               loading={loading}
@@ -197,7 +236,6 @@ export default function FoodOrderApp() {
               theme={theme}
             />
 
-            {/* Kirim language ke Category */}
             <Category
               categories={categories}
               activeCategory={activeCategory}
@@ -220,7 +258,6 @@ export default function FoodOrderApp() {
 
           <div className="hidden md:block w-full md:w-auto">
             <div className="sticky top-6">
-              {/* Kirim language ke CartSidebar */}
               <CartSidebar
                 cartItems={cartItems}
                 setCartItems={setCartItems}
@@ -234,7 +271,6 @@ export default function FoodOrderApp() {
           </div>
 
           <div className="block md:hidden">
-            {/* Kirim language ke CartMobile */}
             <CartMobile
               cartItems={cartItems}
               setCartItems={setCartItems}
@@ -276,9 +312,7 @@ export default function FoodOrderApp() {
                 processCheckout();
               }}
               className={`${
-                theme === "colorful"
-                  ? "bg-purple-600"
-                  : "bg-linear-to-r from-[#2C3930] via-[#3F4F44] to-[#2C3930]"
+                theme === "colorful" ? "bg-purple-600" : "bg-green-600"
               } text-white`}
               disabled={isProcessing}
             >
@@ -300,7 +334,6 @@ export default function FoodOrderApp() {
 function MenuSection({ loading, error, language, items, onAdd, theme }: any) {
   return (
     <div>
-      {/* Judul Menu Dinamis */}
       <h3 className="text-xl font-bold mb-4">
         {language === "id" ? "Menu" : "Menu"}
       </h3>
