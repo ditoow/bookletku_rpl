@@ -25,9 +25,19 @@ export default function AdminLayout({
 
         if (!session) {
           router.replace("/admin/login");
-        } else {
-          setIsLoading(false);
+          return;
         }
+
+        const expiresAt = session.expires_at;
+        const now = Math.floor(Date.now() / 1000);
+
+        if (expiresAt && now > expiresAt) {
+          await supabase.auth.signOut();
+          router.replace("/admin/login");
+          return;
+        }
+
+        setIsLoading(false);
       } catch (error) {
         console.error("Error checking session:", error);
         router.replace("/admin/login");
@@ -35,6 +45,18 @@ export default function AdminLayout({
     };
 
     checkSession();
+
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (event === "SIGNED_OUT" || !session) {
+          router.replace("/admin/login");
+        }
+      }
+    );
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
   }, [router]);
 
   if (isLoading) {
@@ -50,15 +72,12 @@ export default function AdminLayout({
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
-      {/* Sidebar dengan props kontrol */}
       <AdminSidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
       />
 
-      {/* Main Content Wrapper */}
       <div className="flex-1 flex flex-col w-full">
-        {/* Header Mobile (Hanya muncul di layar kecil) */}
         <header className="md:hidden bg-white border-b p-4 flex items-center gap-4 sticky top-0 z-30">
           <Button
             variant="ghost"
@@ -71,7 +90,6 @@ export default function AdminLayout({
           <h1 className="font-bold text-lg text-gray-800">Admin Panel</h1>
         </header>
 
-        {/* Konten Halaman */}
         <main className="flex-1 p-4 md:p-6 overflow-y-auto">{children}</main>
       </div>
     </div>
