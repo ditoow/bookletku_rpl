@@ -127,7 +127,6 @@ export default function FoodOrderApp() {
   const handleCheckoutClick = () =>
     cartItems.length > 0 && setIsConfirmOpen(true);
 
-  
   const processCheckout = async () => {
     if (cartItems.length === 0) return;
     setIsProcessing(true);
@@ -138,7 +137,6 @@ export default function FoodOrderApp() {
     );
 
     try {
-      
       const { data: orderData, error: orderError } = await supabase
         .from("orders")
         .insert({ total_amount: totalAmount, status: "completed" })
@@ -147,7 +145,6 @@ export default function FoodOrderApp() {
 
       if (orderError) throw orderError;
 
-      
       const orderItemsData = cartItems.map((item) => ({
         order_id: orderData.id,
         menu_item_id: item.id,
@@ -161,8 +158,7 @@ export default function FoodOrderApp() {
 
       if (itemsError) throw itemsError;
 
-      
-      const phoneNumber = "6281226821148"; 
+      const phoneNumber = "6281226821148";
 
       let message = `*Pesanan Baru #${orderData.id.slice(0, 8)}*\n\n`;
       message += `*Detail Pesanan:*\n`;
@@ -180,12 +176,10 @@ export default function FoodOrderApp() {
       message += `\n\nMohon diproses, terima kasih!`;
 
       const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https:
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-      
       window.open(whatsappUrl, "_blank");
 
-      
       setCartItems([]);
       setIsCartOpen(false);
       setIsConfirmOpen(false);
