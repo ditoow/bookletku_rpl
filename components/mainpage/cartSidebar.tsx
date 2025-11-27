@@ -61,7 +61,7 @@ export default function CartSidebar({
   };
 
   return (
-    <div className="shrink-0">
+    <div className="shrink-0 ">
       {isOpen ? (
         <Card className="sticky p-0 top-6 w-full md:w-[400px] bg-white shadow-lg transition-all duration-300">
           <CardContent className="p-6">
