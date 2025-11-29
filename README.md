@@ -128,7 +128,7 @@ src/
 - Reusable components
 - Type-safe dengan TypeScript
 
-**Detailed Structure**: Lihat [FOLDER-STRUCTURE.md](./FOLDER-STRUCTURE.md)
+**Detailed Structure**: Lihat [FOLDER-STRUCTURE.md](./folderStructure.md)
 
 ---
 
