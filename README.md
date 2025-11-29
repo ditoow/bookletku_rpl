@@ -12,49 +12,39 @@ bookletku.vercel.app
 ---
 
 ### Anggota 
-- Ghifari Wira Andaito **A11.2024.15775** 
-- Damia Balqis Setyodhiyauddin **A11.2024.15803** 
-- Onalla Aldeanuva**A11.2024.15952** 
-- Muhamad Aris Setiawan**A11.2024.15984** 
+- Ghifari Wira Andaito - **A11.2024.15775** 
+- Damia Balqis Setyodhiyauddin - **A11.2024.15803** 
+- Onalla Aldeanuva - **A11.2024.15952** 
+- Muhamad Aris Setiawan - **A11.2024.15984** 
 
 
-## ✨ Features
+## Features
 
-### 🛍️ Customer Features
-- ✅ **Digital Menu Browsing** - Browse menu dengan kategori dan search
-- ✅ **Shopping Cart** - Add to cart dengan quantity management
-- ✅ **Featured Menu Carousel** - Horizontal scrollable popular items
-- ✅ **Category Filtering** - Filter menu by category
-- ✅ **Search Function** - Real-time search menu items
-- ✅ **Order Checkout** - WhatsApp integration untuk order confirmation
-- ✅ **Responsive Design** - Mobile-first, desktop optimized
-- ✅ **Dual Theme** - Minimalist & Colorful theme toggle
-- ✅ **Multi-language** - Indonesian & English support
+### Customer Features
+- **Digital Menu Browsing** - Browse menu dengan kategori dan search
+- **Shopping Cart** - Add to cart dengan quantity management
+- **Featured Menu Carousel** - Horizontal scrollable popular items
+- **Category Filtering** - Filter menu by category
+- **Search Function** - Real-time search menu items
+- **Order Checkout** - WhatsApp integration untuk order confirmation
+- **Responsive Design** - Mobile-first, desktop optimized
+- **Dual Theme** - Minimalist & Colorful theme toggle
+- **Multi-language** - Indonesian & English support
 
-### 👨‍💼 Admin Features
-- ✅ **Dashboard Analytics** - Revenue charts, statistics, trends
-- ✅ **Product Management** - CRUD operations untuk menu items
-- ✅ **Order Tracking** - Monitor orders dan revenue
-- ✅ **Category Analytics** - Pie chart category distribution
-- ✅ **Cart Tracking** - Area chart cart additions trends
-- ✅ **QR Code Generator** - Generate QR code untuk menu access
-- ✅ **Glassmorphism UI** - Modern, premium admin interface
-- ✅ **Authentication** - Secure admin login
-
----
-
-## 🎨 Design Highlights
-
-- 🌟 **Glassmorphism UI** - Modern frosted glass effect
-- 🎭 **Dual Theme Support** - Minimalist cream & Colorful gradient
-- 🎨 **Premium Aesthetics** - Professional, polished design
-- 📱 **Mobile Responsive** - Optimized untuk semua screen sizes
-- ⚡ **Smooth Animations** - Micro-interactions untuk better UX
-- 🖼️ **Beautiful Typography** - Geist Sans & Geist Mono fonts
+### Admin Features
+- **Dashboard Analytics** - Revenue charts, statistics, trends
+- **Product Management** - CRUD operations untuk menu items
+- **Order Tracking** - Monitor orders dan revenue
+- **Category Analytics** - Pie chart category distribution
+- **Cart Tracking** - Area chart cart additions trends
+- **QR Code Generator** - Generate QR code untuk menu access
+- **Glassmorphism UI** - Modern, premium admin interface
+- **Authentication** - Secure admin login
 
 ---
 
-## 🚀 Quick Start
+
+## Quick Start
 
 ### Prerequisites
 - **Node.js** 18+ atau 20+
@@ -63,13 +53,13 @@ bookletku.vercel.app
 
 ### Installation
 
-1️⃣ **Clone repository**
+**1. Clone repository**
 ```bash
 git clone <repository-url>
 cd bookletku_rpl7
 ```
 
-2️⃣ **Install dependencies**
+**2. Install dependencies**
 ```bash
 npm install
 # atau
@@ -78,7 +68,7 @@ yarn install
 pnpm install
 ```
 
-3️⃣ **Setup Environment Variables**
+**3. Setup Environment Variables**
 
 Create `.env` file di root folder:
 ```env
@@ -86,7 +76,7 @@ NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
-4️⃣ **Setup Database**
+**4. Setup Database**
 
 Buat tables di Supabase dengan schema:
 - `menu` - Menu items 
@@ -94,18 +84,18 @@ Buat tables di Supabase dengan schema:
 - `order_items` - Order items 
 - `cart_tracking` - Cart tracking analytics
 
-5️⃣ **Run Development Server**
+**5. Run Development Server**
 ```bash
 npm run dev
 ```
 
-6️⃣ **Open Application**
+**6. Open Application**
 - Customer Interface: [http://localhost:3000](http://localhost:3000)
 - Admin Panel: [http://localhost:3000/admin](http://localhost:3000/admin)
 
 ---
 
-## 📜 Available Scripts
+## Available Scripts
 
 | Script | Description |
 |--------|-------------|
@@ -116,7 +106,7 @@ npm run dev
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### Clean Architecture + Feature-Based Organization
 
@@ -133,17 +123,17 @@ src/
 ```
 
 **Benefits:**
-- ✅ Separation of concerns
-- ✅ Easy to maintain & scale
-- ✅ Clear code organization
-- ✅ Reusable components
-- ✅ Type-safe dengan TypeScript
+- Separation of concerns
+- Easy to maintain & scale
+- Clear code organization
+- Reusable components
+- Type-safe dengan TypeScript
 
-📖 **Detailed Structure**: Lihat [FOLDER-STRUCTURE.md](./FOLDER-STRUCTURE.md)
+**Detailed Structure**: Lihat [FOLDER-STRUCTURE.md](./FOLDER-STRUCTURE.md)
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### **Frontend Framework**
 - **Next.js 16** - React framework dengan App Router
@@ -170,7 +160,7 @@ src/
 
 ---
 
-## 📱 Application Structure
+## Application Structure
 
 ### Customer Interface (`/`)
 ```
@@ -216,7 +206,7 @@ src/
 
 ---
 
-## 📊 Data Flow
+## Data Flow
 
 ### Customer Order Flow
 ```
@@ -252,15 +242,15 @@ Real-time Update di Customer Interface
 
 ---
 
-## 🎯 Key Features Deep Dive
+## Key Features Deep Dive
 
-### 🛒 Shopping Cart System
+### Shopping Cart System
 - **Desktop**: Sticky sidebar dengan glassmorphism
 - **Mobile**: Bottom sheet dengan smooth animations
 - **Features**: Quantity controls, item removal, price calculation
 - **Persistence**: State management dengan React hooks
 
-### 📊 Admin Dashboard
+### Admin Dashboard
 - **Stats Cards**: Revenue, total orders, products, pending orders
 - **Charts**: 
   - Revenue by category (Bar chart)
@@ -268,20 +258,19 @@ Real-time Update di Customer Interface
   - Cart additions trends (Area chart)
 - **Real-time Data**: Fetch dari Supabase dengan auto-refresh
 
-### 🎨 Theme System
+### Theme System
 - **Minimalist**: Cream background (`#DCD7C9`), clean aesthetics
 - **Colorful**: Gradient purple-pink background, vibrant colors
 - **Toggle**: Seamless theme switching dengan transition effects
-- **Glassmorphism**: Consistent across both themes
 
-### 🌐 Multi-language Support
+### Multi-language Support
 - **Languages**: Indonesian (ID) & English (EN)
 - **Scope**: UI labels, buttons, messages
 - **Implementation**: Language state management dengan conditional rendering
 
 ---
 
-## 🔐 Environment Variables
+## Environment Variables
 
 Create `.env` file:
 
@@ -296,7 +285,7 @@ NEXT_PUBLIC_WHATSAPP_NUMBER=+62xxxxxxxxxx
 
 ---
 
-## 📦 Database Schema
+## Database Schema
 
 ### `menu` Table
 ```sql
@@ -346,27 +335,8 @@ CREATE TABLE cart_tracking (
 
 ---
 
-## 🎓 Code Quality
 
-### Component Guidelines
-- ✅ **Max 200 lines per file**
-- ✅ **Single responsibility principle**
-- ✅ **Typed props dengan TypeScript**
-- ✅ **Clear naming conventions**
-
-### Folder Organization
-- ✅ **Feature-based modules**
-- ✅ **Shared resources separation**
-- ✅ **Clear component hierarchy**
-
-### Code Standards
-- ✅ **ESLint configuration**
-- ✅ **TypeScript strict mode**
-- ✅ **Consistent formatting**
-
----
-
-## 📚 Key Patterns
+## Key Patterns
 
 ### Custom Hooks
 ```typescript
@@ -400,53 +370,16 @@ const revenue = await getRevenue();
 
 ---
 
-## 🚧 Roadmap
-
-### Upcoming Features
-- [ ] Payment Gateway Integration
-- [ ] Customer Authentication
-- [ ] Order History untuk customers
-- [ ] Real-time Order Notifications
-- [ ] Receipt/Invoice Generation
-- [ ] Advanced Analytics Dashboard
-- [ ] Table Reservation System
-- [ ] Rating & Review System
-
 ---
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open Pull Request
-
----
-
-## 📄 License
-
-This project is private and proprietary.
-
----
-
-## 👥 Team
-
-**RPL7 Team**  
-Developed with ❤️ by Software Engineering Class 7
-
----
-
-## 📞 Support
+## Support
 
 Untuk pertanyaan atau issues:
-- Create an issue di repository
-- Contact team via email
 - Check documentation di `FOLDER-STRUCTURE.md`
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Next.js Team** - Amazing React framework
 - **Vercel** - Excellent hosting platform
