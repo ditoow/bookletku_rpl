@@ -38,7 +38,6 @@ bookletku.vercel.app
 - **Category Analytics** - Pie chart category distribution
 - **Cart Tracking** - Area chart cart additions trends
 - **QR Code Generator** - Generate QR code untuk menu access
-- **Glassmorphism UI** - Modern, premium admin interface
 - **Authentication** - Secure admin login
 
 ---
@@ -245,7 +244,7 @@ Real-time Update di Customer Interface
 ## Key Features Deep Dive
 
 ### Shopping Cart System
-- **Desktop**: Sticky sidebar dengan glassmorphism
+- **Desktop**: Sticky sidebar 
 - **Mobile**: Bottom sheet dengan smooth animations
 - **Features**: Quantity controls, item removal, price calculation
 - **Persistence**: State management dengan React hooks
