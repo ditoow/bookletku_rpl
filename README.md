@@ -12,7 +12,7 @@ bookletku.vercel.app
 ---
 
 ### Anggota 
-- Ghifari Wira Andaito - **A11.2024.15775** 
+- Ghifari Wira Andanito - **A11.2024.15775** 
 - Damia Balqis Setyodhiyauddin - **A11.2024.15803** 
 - Onalla Aldeanuva - **A11.2024.15952** 
 - Muhamad Aris Setiawan - **A11.2024.15984** 
