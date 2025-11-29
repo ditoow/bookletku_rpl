@@ -1,4 +1,4 @@
-# 🍽️ Bookletku - Digital Menu Ordering System
+# Bookletku - Kelompok 3 - Digital Menu Ordering System
 bookletku.vercel.app
 
 ![Next.js](https://img.shields.io/badge/Next.js-16.0-black?style=for-the-badge&logo=next.js)
@@ -11,7 +11,7 @@ bookletku.vercel.app
 
 ---
 
-### Anggota
+### Anggota 
 - Ghifari Wira Andaito **A11.2024.15775** 
 - Damia Balqis Setyodhiyauddin **A11.2024.15803** 
 - Onalla Aldeanuva**A11.2024.15952** 
